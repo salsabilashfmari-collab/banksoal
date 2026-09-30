@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bank Soal Calon Hakim — Sektor I: Umum Peradilan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold-900:#5c4610; --gold-800:#7a5c14; --gold-700:#96721a; --gold-600:#b78d24;
+    --gold-500:#d4a72f; --gold-400:#e6c04f; --gold-300:#f2d778; --gold-100:#faedc0;
+    --maroon:#7a2028; --maroon-dark:#5a1620;
+    --green:#2f6d3b; --green-bg:#e6f2e6;
+    --red:#a33131; --red-bg:#f7e6e3;
+    --ink:#2b2113; --ink-soft:#5c5240;
+    --paper:#fdf9ee; --paper-raised:#fffdf6;
+    --line: rgba(43,33,19,0.14);
+    --shadow: 0 1px 2px rgba(43,33,19,0.06);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 480px at 12% -10%, rgba(212,167,47,0.16), transparent 60%),
+      radial-gradient(900px 420px at 100% 0%, rgba(122,32,40,0.07), transparent 55%),
+      var(--paper);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Public Sans", system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1c150a; --paper-raised:#241b0e; --ink:#f3e9d2; --ink-soft:#c9bb98;
+      --line: rgba(243,233,210,0.14); --gold-100:#3a2b0e;
+      --green-bg:#173a1f; --red-bg:#3a1c17;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#1c150a; --paper-raised:#241b0e; --ink:#f3e9d2; --ink-soft:#c9bb98;
+    --line: rgba(243,233,210,0.14); --gold-100:#3a2b0e;
+    --green-bg:#173a1f; --red-bg:#3a1c17;
+  }
+
+  a{color:inherit;}
+  ::selection{background:var(--gold-300); color:var(--ink);}
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- Header ---------- */
+  header.hero{ padding:56px 0 32px; border-bottom:1px solid var(--line); }
+  .crest{
+    width:56px; height:56px; flex:none; border-radius:50%;
+    background: conic-gradient(from 220deg, var(--gold-300), var(--gold-600) 30%, var(--gold-400) 55%, var(--gold-600) 80%, var(--gold-300));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--gold-500), var(--shadow);
+  }
+  .crest svg{width:28px; height:28px;}
+  .hero-top{display:flex; align-items:center; gap:16px;}
+  .hero-eyebrow{ font-size:13px; color:var(--maroon); font-weight:600; margin:0 0 4px; }
+  .hero h1{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:clamp(30px, 5vw, 44px); line-height:1.08; margin:0; color:var(--ink);
+  }
+  .hero p.lede{ max-width:60ch; margin:16px 0 0; font-size:16px; line-height:1.65; color:var(--ink-soft); }
+
+  /* ---------- Score bar ---------- */
+  .scorebar{
+    position:sticky; top:0; z-index:6;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .scorebar-inner{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+  .sb-stat{ display:flex; flex-direction:column; }
+  .sb-stat b{ font-family:"Fraunces", serif; font-size:22px; font-weight:600; color:var(--maroon); line-height:1.1; }
+  .sb-stat span{ font-size:12px; color:var(--ink-soft); }
+  .sb-bar{ flex:1; min-width:120px; height:8px; background:var(--gold-100); border-radius:99px; overflow:hidden; }
+  .sb-bar-fill{ height:100%; background:var(--maroon); width:0%; transition:width .3s ease; }
+  .btn-reset{
+    margin-left:auto; flex:none;
+    font:inherit; font-size:13px; font-weight:600;
+    background:transparent; color:var(--maroon);
+    border:1px solid var(--maroon); border-radius:8px;
+    padding:8px 14px; cursor:pointer;
+  }
+  .btn-reset:hover{ background:var(--maroon); color:var(--gold-100); }
+
+  /* ---------- Search / Tabs ---------- */
+  .controls{ padding:18px 0 4px; }
+  .search{
+    display:flex; align-items:center; gap:10px;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:12px;
+    padding:12px 16px; box-shadow:var(--shadow);
+  }
+  .search svg{ flex:none; opacity:0.55; }
+  .search input{ border:none; outline:none; background:transparent; font:inherit; font-size:15px; color:var(--ink); width:100%; }
+  .search input::placeholder{ color:var(--ink-soft); }
+  .tabs{ display:flex; gap:8px; margin-top:14px; overflow-x:auto; padding-bottom:2px; scrollbar-width:none; }
+  .tabs::-webkit-scrollbar{ display:none; }
+  .tab{
+    flex:none; font:inherit; font-size:13.5px; font-weight:600; color:var(--ink-soft);
+    background:transparent; border:1px solid var(--line); padding:8px 14px; border-radius:999px;
+    cursor:pointer; white-space:nowrap; transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .tab .count{ opacity:0.65; font-weight:500; margin-left:4px; }
+  .tab:hover{ border-color:var(--gold-600); }
+  .tab.active{ background:var(--maroon); border-color:var(--maroon); color:var(--gold-100); }
+
+  /* ---------- Sections & questions ---------- */
+  main{ padding:8px 0 80px; }
+  .section-block{ margin-top:44px; }
+  .section-head{
+    display:flex; align-items:baseline; gap:12px;
+    border-bottom:2px solid var(--gold-500); padding-bottom:10px; margin-bottom:18px;
+  }
+  .section-head h2{ font-family:"Fraunces", serif; font-weight:600; font-size:22px; margin:0; color:var(--ink); }
+  .section-head .tally{ font-size:13px; color:var(--ink-soft); margin-left:auto; }
+
+  .qcard{
+    border:1px solid var(--line); border-radius:12px; background:var(--paper-raised);
+    margin-bottom:16px; box-shadow:var(--shadow); padding:18px;
+  }
+  .qcard-top{ display:flex; align-items:flex-start; gap:14px; margin-bottom:14px; }
+  .qa-num{
+    flex:none; font-family:"Fraunces", serif; font-weight:600; font-size:14px;
+    color:var(--maroon); background:var(--gold-100); border:1px solid var(--gold-500);
+    width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  }
+  .qcard-q{ flex:1; font-size:15.5px; font-weight:600; line-height:1.5; padding-top:3px; }
+
+  .options{ display:flex; flex-direction:column; gap:8px; margin-left:42px; }
+  .opt{
+    display:flex; align-items:center; gap:12px; text-align:left;
+    border:1px solid var(--line); border-radius:9px; background:var(--paper);
+    padding:11px 14px; font:inherit; font-size:14.5px; color:var(--ink);
+    cursor:pointer; transition:border-color .15s ease, background .15s ease;
+  }
+  .opt:hover:not(.locked .opt){ border-color:var(--gold-600); }
+  .opt-letter{
+    flex:none; width:24px; height:24px; border-radius:50%;
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:700; color:var(--ink-soft);
+  }
+  .qcard.locked .opt{ cursor:default; }
+  .qcard.locked .opt.correct{ background:var(--green-bg); border-color:var(--green); }
+  .qcard.locked .opt.correct .opt-letter{ background:var(--green); border-color:var(--green); color:#fff; }
+  .qcard.locked .opt.wrong{ background:var(--red-bg); border-color:var(--red); }
+  .qcard.locked .opt.wrong .opt-letter{ background:var(--red); border-color:var(--red); color:#fff; }
+  .qcard.locked .opt:not(.correct):not(.wrong){ opacity:0.55; }
+
+  .result-tag{
+    margin-left:42px; margin-top:12px; display:none;
+    align-items:center; gap:8px; font-size:13.5px; font-weight:600; padding:8px 12px;
+    border-radius:8px;
+  }
+  .qcard.locked .result-tag{ display:flex; }
+  .result-tag.ok{ background:var(--green-bg); color:var(--green); }
+  .result-tag.no{ background:var(--red-bg); color:var(--red); }
+
+  .explanation{
+    margin-left:42px; margin-top:8px; display:none;
+    font-size:14px; line-height:1.65; color:var(--ink-soft);
+    border-top:1px dashed var(--line); padding-top:10px;
+  }
+  .qcard.locked .explanation{ display:block; }
+  .explanation b{ color:var(--ink); font-weight:600; }
+
+  .empty{ text-align:center; padding:60px 20px; color:var(--ink-soft); }
+  .empty b{ display:block; font-family:"Fraunces", serif; font-size:20px; color:var(--ink); margin-bottom:6px; font-weight:600; }
+
+  footer{ border-top:1px solid var(--line); padding:26px 0 calc(26px + env(safe-area-inset-bottom,0px)); text-align:center; color:var(--ink-soft); font-size:13px; }
+
+  @media (max-width:560px){
+    .hero{ padding:40px 0 24px; }
+    .options, .result-tag, .explanation{ margin-left:0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="crest">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2v20M6 6l-4 8a4 4 0 0 0 8 0L6 6zM18 6l-4 8a4 4 0 0 0 8 0l-4-8zM3 6h6M15 6h6M9 6h6" stroke="#3a2308" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="hero-eyebrow">Bank Soal</p>
+        <h1>Bank Soal Calon Hakim</h1>
+      </div>
+    </div>
+    <p class="lede">Sektor I: Bank Soal Umum Peradilan — 136 soal dari materi iUDICES FUTURi 2025, mencakup asas peradilan, kekuasaan kehakiman, Mahkamah Agung, MK &amp; KY, hingga struktur Peradilan Agama dan PTUN. Pilih jawaban, langsung ketahuan benar/salah.</p>
+  </div>
+</header>
+
+<div class="scorebar">
+  <div class="wrap scorebar-inner">
+    <div class="sb-stat"><b id="sbAnswered">0/0</b><span>Terjawab</span></div>
+    <div class="sb-stat"><b id="sbCorrect">0</b><span>Benar</span></div>
+    <div class="sb-stat"><b id="sbScore">0%</b><span>Skor</span></div>
+    <div class="sb-bar"><div class="sb-bar-fill" id="sbBarFill"></div></div>
+    <button class="btn-reset" id="btnReset">Ulangi Kuis</button>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="wrap">
+    <label class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="text" placeholder="Cari pertanyaan…">
+    </label>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<footer>Disusun otomatis dari dokumen Rangkuman Materi &amp; Bank Soal Persiapan Calon Hakim (iUDICES FUTURi 2025), Sektor I: Bank Soal Umum Peradilan. Mohon tetap dicek ulang dengan sumber aslinya.</footer>
+
+<script>
+/* Setiap soal: q = pertanyaan, options = 4 pilihan, correct = index jawaban benar (0-3), explanation = pembahasan */
+const DATA = [
+  {
+    "id": "asas-umum",
+    "title": "Asas-Asas Umum Peradilan",
+    "questions": [
+      {
+        "q": "Asas hukum yg berkaitan dgn tata urutan peraturan perundang- undangan yg diatur dlm UU 12/2011 yg telah diubah dgn UU 15/2019 dan UU 13/2022 adalah...",
+        "options": [
+          "Asas lex posterior derogat legi priori",
+          "Asas lex superior derogat legi inferiori",
+          "Asas lex specialis derogat legi generalis",
+          "Asas lex prospicit non respicit",
+          "Asas lex semper dabit remediun"
+        ],
+        "correct": 1,
+        "explanation": "Asas lex superior derogat legi inferiori"
+      },
+      {
+        "q": "Berdasarkan asas lex superior derogat legi inferiori jika terdapat pertentangan antara peraturan presiden dan peraturan pemerintah maka peraturan mana yg harus dikesampingkan...",
+        "options": [
+          "Peraturan daerah",
+          "Peraturan pemerintah",
+          "Peraturan pemerintah pengganti UU",
+          "Peraturan presiden",
+          "UUD"
+        ],
+        "correct": 3,
+        "explanation": "Peraturan presiden"
+      },
+      {
+        "q": "Di bawah ini yg merupakan syarat berlakunya asas lex specialis derogat legi generalis adalah...",
+        "options": [
+          "Antara dua peraturan yg secara hierarki sederajat",
+          "Antara dua peraturan yg mengatur mengenai materi yg sama",
+          "Antara dua peraturan dlm lingkungan hukum (rezim) yg sama",
+          "Antara UU dan UU",
+          "Semua benar"
+        ],
+        "correct": 4,
+        "explanation": "Semua benar"
+      },
+      {
+        "q": "Di bawah ini yg merupakan syarat berlakunya asas lex posterior derogat legi priori adalah...",
+        "options": [
+          "Antara UU dan UU",
+          "Antara dua peraturan yg sederajat",
+          "Aturan baru lebih tinggi dari aturan lama secara hierarki",
+          "Mengatur objek yg sama",
+          "Semua benar"
+        ],
+        "correct": 4,
+        "explanation": "Semua benar"
+      },
+      {
+        "q": "Asas hukum yg mengatur bagaimana suatu norma hukum dpt dikesampingkan atau dicabut oleh norma hukum lain adalah...",
+        "options": [
+          "Asas delegasi",
+          "Asas derogasi",
+          "Asas tata hukum",
+          "Asas hierarki",
+          "Asas deregulasi"
+        ],
+        "correct": 1,
+        "explanation": "Asas derogasi"
+      },
+      {
+        "q": "Openbaarheid van rechtspraak adalah asas...",
+        "options": [
+          "Asas pembuktian terbuka untuk para pihak",
+          "Asas pembagian beban pembuktian",
+          "Asas pengajuan gugatan",
+          "Asas persidangan terbuka untuk umum",
+          "Asas mendengar kedua belah pihak"
+        ],
+        "correct": 3,
+        "explanation": "Asas persidangan terbuka untuk umum"
+      },
+      {
+        "q": "Dalam hal tidak dipenuhinya ketentuan asas openbaarheid van rechtspraak akibat yg terjadi adalah...",
+        "options": [
+          "Putusan dapat dibatalkan",
+          "Putusan niet onvantkelijke verklaard",
+          "Putusan tidak dapat dieksekusi",
+          "Putusan batal demi hukum",
+          "Putusan bebas"
+        ],
+        "correct": 3,
+        "explanation": "Putusan batal demi hukum"
+      },
+      {
+        "q": "Di bawah ini yg bukan merupakan perkara yg sidangnya tertutup untuk umum adalah...",
+        "options": [
+          "Gugatan perceraian",
+          "Perkara yg berkaitan dgn ketertiban umum",
+          "Permohonan dispensasi kawin dgn alasan hamil",
+          "Perkara yg berkaitan dgn rahasia militer",
+          "Perkara yg berkaitan dgn rahasia negara"
+        ],
+        "correct": 2,
+        "explanation": "Permohonan dispensasi kawin dgn alasan hamil"
+      },
+      {
+        "q": "Judex ne procedat ex officio adalah asas...",
+        "options": [
+          "Hakim bersifat pasif",
+          "Hakim bersifat aktif",
+          "Hakim tidak boleh memberikan lebih daripada yg digugat",
+          "Hakim adalah corong UU",
+          "Hakim bersifat menunggu"
+        ],
+        "correct": 4,
+        "explanation": "Hakim bersifat menunggu"
+      },
+      {
+        "q": "Inisiatif mengajukan perkara sepenuhnya berada ditangan pihak yg berkepentingan, hakim hanya memeriksa dan mengadili perkara yg diajukan, dan tidak boleh bertindak aktif mencari perkara adalah pengertian asas...",
+        "options": [
+          "Hakim bersifat aktif",
+          "Hakim bersifat menunggu",
+          "Ultra petita",
+          "Hakim bersifat aktif",
+          "Actor sequitur forum rei"
+        ],
+        "correct": 1,
+        "explanation": "Hakim bersifat menunggu"
+      },
+      {
+        "q": "Lijdelijkeheid van rechter adalah asas...",
+        "options": [
+          "Hakim bersifat menunggu",
+          "Hakim bersifat aktif",
+          "Hakim adalah corong UU",
+          "Hakim bersifat pasif",
+          "Putusan hakim harus dianggap benar"
+        ],
+        "correct": 3,
+        "explanation": "Hakim bersifat pasif"
+      },
+      {
+        "q": "Ruang lingkup sengketa yg diajukan kepada hakim ditentukan oleh pihak yg berperkara dan bukan oleh hakim adalah pengertian asas...",
+        "options": [
+          "Hakim bersifat pasif",
+          "Hakim bersifat menunggu",
+          "Hakim hanya mengadili sesuatu yg digugat",
+          "Hakim bersifat aktif",
+          "Hakim tau hukum"
+        ],
+        "correct": 0,
+        "explanation": "Hakim bersifat pasif"
+      },
+      {
+        "q": "Hakim (pengadilan) tidak boleh menolak untuk memeriksa, mengadili dan memutus suatu perkara yg diajukan dgn dalih hukum tidak ada/kurang jelas. Larangan ini berkaitan dgn asas...",
+        "options": [
+          "Asas fiksi hukum",
+          "Asas presumtio iures de iure",
+          "Asas res judicata pro veritate habetur",
+          "Asas ius curia novit",
+          "Asas in dubio pro reo"
+        ],
+        "correct": 3,
+        "explanation": "Asas ius curia novit"
+      },
+      {
+        "q": "Dalam perkara pidana asas unnus testis nullus testis tidak berlaku dalam...",
+        "options": [
+          "Perkara korupsi",
+          "Acara pemeriksaan biasa",
+          "Acara pemeriksaan cepat",
+          "Acara pemeriksaan singkat",
+          "Perkara yg terdakwanya residivis"
+        ],
+        "correct": 2,
+        "explanation": "Acara pemeriksaan cepat"
+      },
+      {
+        "q": "Dalam asas penyelenggaraan kekuasaan kehakiman peradilan negara menerapkan dan menegakkan hukum dan keadilan berdasarkan...",
+        "options": [
+          "Demi keadilan berdasarkan ketuhanan yg maha esa",
+          "UUD",
+          "Kepastian hukum",
+          "Pancasila",
+          "Nilai-nilai hukum yg hidup di masyarakat"
+        ],
+        "correct": 3,
+        "explanation": "Pancasila"
+      },
+      {
+        "q": "Dalam asas penyelenggaraan kekuasaan kehakiman pihak yg diadili memiliki hak terhadap hakim yg mengadili perkaranya, hak tersebut adalah...",
+        "options": [
+          "Hak miranda",
+          "Hak ingkar",
+          "Hak mendapat bantuan hukum",
+          "Hak imunitas",
+          "Hak sanggah"
+        ],
+        "correct": 1,
+        "explanation": "Hak ingkar"
+      },
+      {
+        "q": "Asas hukum yg berkaitan dgn kewajiban hakim mengundurkan diri dari persidangan apabila terikat hubungan sedarah atau semenda dgn pihak yg berperkara adalah...",
+        "options": [
+          "Res judicata pro veritate habetur",
+          "Summum ius summa injuria",
+          "Cogitationis poenam nemo patitur",
+          "Nemo judex idoneus in propria causa",
+          "Potior est qui prior est"
+        ],
+        "correct": 3,
+        "explanation": "Nemo judex idoneus in proria causa"
+      },
+      {
+        "q": "Dalam hal terdapat pelanggaran asas nemo judex in propria causa tentang hakim yg terikat hubungan darah dgn pihak. Akibat yg terjadi adalah...",
+        "options": [
+          "Putusan tidak sah",
+          "Putusan gugur",
+          "Putusan tidak dpt diterima",
+          "Putusan bebas",
+          "Putusan lepas"
+        ],
+        "correct": 0,
+        "explanation": "Putusan tidak sah"
+      },
+      {
+        "q": "Dalam asas penyelenggaraan kekuasaan kehakiman dlm menjalankan tugas dan fungsinya hakim dan hakim konstitusi wajib menjaga...",
+        "options": [
+          "Independensi peradilan",
+          "Marwah peradilan",
+          "Kemandirian peradilan",
+          "Martabat peradilan",
+          "Keagungan peradilan"
+        ],
+        "correct": 2,
+        "explanation": "Kemandirian peradilan"
+      },
+      {
+        "q": "Dalam asas penyelenggaraan kekuasaan kehakiman mengatur bahwa tidak seorangpun dpt dikenakan penangkapan, penahanan, penggeledahan dan penyitaan kecuali atas...",
+        "options": [
+          "Perintah lisan",
+          "Perintah tertulis",
+          "Perintah presiden",
+          "Perintah kapolri",
+          "Perintah UUD"
+        ],
+        "correct": 1,
+        "explanation": "Perintah tertulis"
+      }
+    ]
+  },
+  {
+    "id": "kekuasaan-kehakiman",
+    "title": "Kekuasaan Kehakiman & Kode Etik Hakim",
+    "questions": [
+      {
+        "q": "Pengadilan memeriksa, mengadili dan memutus perkara dengan susunan majelis sekurang-kurangnya 3 orang hakim, kecuali undang- undang menentukan lain diatur dalam pasal UU No 48 tahun 2009 tentang kekuasaan kehakiman",
+        "options": [
+          "Pasal 11 ayat (1)",
+          "Pasal 11 ayat (2)",
+          "Pasal 11 ayat (3)",
+          "Pasal 11 ayat (4)"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 11 ayat (3) UU 48/2009 menegaskan bahwa perkara diperiksa oleh majelis sekurang-kurangnya 3 hakim, kecuali undang-undang menentukan lain. Putusan diambil berdasarkan sidang permusyawaratan yang bersifat… (Pasal 14 ayat (1)) a) Objektif b) Transparan c) Rahasia d) Adil Pembahasan: Sidang permusyawaratan hakim bersifat rahasia untuk menjaga independensi dan objektivitas hakim dalam mengambil putusan."
+      },
+      {
+        "q": "Seorang hakim wajib mengundurkan diri dari persidangan apabila terkait hubungan keluarga sedarah atau semenda sampai derajat (Pasal 17 ayat (3))",
+        "options": [
+          "Kedua",
+          "Ketiga",
+          "Keempat",
+          "Kelima"
+        ],
+        "correct": 2,
+        "explanation": "Hubungan keluarga sampai derajat keempat menimbulkan konflik kepentingan sehingga hakim wajib mengundurkan diri."
+      },
+      {
+        "q": "Apabila dalam pemeriksaan persidangan ternyata salah satu hakim ataupun panitera mempunyai kepentingan langsung atau tidak langsung, maka status putusan tersebut adalah (Pasal 17 ayat (6))",
+        "options": [
+          "Putusan batal demi hukum",
+          "Putusan dianggap tidak pernah ada",
+          "Putusan tidak sah",
+          "Putusan dibatalkan"
+        ],
+        "correct": 0,
+        "explanation": "Jika hakim/ panitera memiliki kepentingan, putusan otomatis batal demi hukum untuk menjaga keadilan."
+      },
+      {
+        "q": "Tiap-tiap putusan pengadilan harus ditandatangani oleh…",
+        "options": [
+          "Majelis hakim",
+          "Majelis hakim dan panitera pengganti",
+          "Ketua majelis dan panitera pengganti",
+          "Panitera pengganti"
+        ],
+        "correct": 1,
+        "explanation": "Putusan wajib ditandatangani oleh majelis hakim dan panitera pengganti sebagai syarat sah putusan."
+      },
+      {
+        "q": "Pengangkatan hakim agung yang berasal dari hakim karier dan non karier dipilih oleh … dan yang diusulkan oleh (Pasal 30 ayat (2))",
+        "options": [
+          "Presiden dan diusulkan oleh DPR",
+          "MK dan diusulkan oleh Komisi Yudisial",
+          "DPR dan diusulkan oleh Komisi Yudisial",
+          "Komisi Yudisial dan diusulkan oleh Presiden"
+        ],
+        "correct": 2,
+        "explanation": "KY mengusulkan calon hakim agung, DPR memilih, lalu Presiden menetapkan."
+      },
+      {
+        "q": "Berikut adalah lembaga yang tidak berhak mengajukan hakim konstitusi adalah (Pasal 34 ayat (1))",
+        "options": [
+          "Komisi Yudisial",
+          "Mahkamah Agung",
+          "DPR",
+          "Presiden"
+        ],
+        "correct": 0,
+        "explanation": "Hakim konstitusi diajukan oleh MA, DPR, dan Presiden, bukan oleh KY."
+      },
+      {
+        "q": "Putusan pengadilan dalam UU Kekuasaan Kehakiman diatur dalam pasal…",
+        "options": [
+          "48",
+          "50",
+          "49",
+          "51"
+        ],
+        "correct": 1,
+        "explanation": "Pasal 50 UU Kekuasaan Kehakiman mengatur mengenai putusan pengadilan."
+      },
+      {
+        "q": "Berikut merupakan alternatif penyelesaian sengketa di luar pengadilan yakni dengan beberapa cara, kecuali (Pasal 60 ayat (1))",
+        "options": [
+          "Negosiasi",
+          "Konsinyasi",
+          "Mediasi",
+          "Penilaian ahli"
+        ],
+        "correct": 1,
+        "explanation": "Konsinyasi bukan ADR, melainkan penitipan ganti rugi ke pengadilan."
+      },
+      {
+        "q": "Kekuasaan kehakiman dalam UUD 1945 diatur dalam pasal…",
+        "options": [
+          "Pasal 24",
+          "Pasal 25",
+          "Pasal 26",
+          "Pasal 27"
+        ],
+        "correct": 0,
+        "explanation": "Pasal 24 UUD 1945 mengatur kekuasaan kehakiman sebagai kekuasaan yang merdeka."
+      },
+      {
+        "q": "Apa tujuan utama diberlakukannya Kode etik dan pedoman perilaku hakim?",
+        "options": [
+          "Meningkatkan kualitas perundang-undangan",
+          "Menjaga dan menegakkan kehormatan, keluhuran martabat serta etika dan perilaku hakim",
+          "Memberikan sanksi bagi hakim",
+          "Membatasi kekuasaan yudisial"
+        ],
+        "correct": 1,
+        "explanation": "Kode etik dan pedoman perilaku hakim berfungsi menjaga kehormatan dan martabat hakim agar tetap independen dan berintegritas."
+      },
+      {
+        "q": "Berikut adalah sikap hakim yang dilambangkan dalam berbagai simbol, kecuali….",
+        "options": [
+          "Kartika",
+          "Cakra",
+          "Sari",
+          "Buana"
+        ],
+        "correct": 2,
+        "explanation": "Simbol sikap hakim terdiri dari Kartika (bintang), Cakra (roda), Buana (dunia), dan lainnya. “Sari” tidak termasuk."
+      },
+      {
+        "q": "Keputusan bersama ketua Mahkamah Agung RI dan ketua Komisi Yudisial RI yang mengatur tentang kode etik dan pedoman perilaku hakim diatur dalam nomor…",
+        "options": [
+          "047/KMA/SKB/IV/2009 || 02/SKB/P.KY/IV/2009",
+          "049/KMA/SKB/IV/2009 || 05/SKB/P.KY/IV/2009",
+          "048/KMA/SKB/IV/2009 || 03/SKB/P.KY/IV/2009",
+          "046/KMA/SKB/IV/2009 || 02/SKB/P.KY/IV/2009"
+        ],
+        "correct": 2,
+        "explanation": "Kode etik hakim diatur dalam Keputusan Bersama Ketua MA & Ketua KY Nomor 048/KMA/SKB/IV/2009 dan 03/SKB/P.KY/IV/2009."
+      },
+      {
+        "q": "Hakim tidak boleh meminta/menerima janji, hadiah, hibah, warisan, pemberian, penghargaan dan pinjaman atau fasilitas dari berbagai pihak kecuali hadiah yang nilainya tidak melebihi….",
+        "options": [
+          "Rp. 500.000",
+          "Rp. 1.000.000",
+          "Rp. 1.500.000",
+          "Rp. 2.000.000"
+        ],
+        "correct": 1,
+        "explanation": "Pengecualian hanya berlaku pada hadiah kecil yang nilainya di bawah Rp1.000.000, dan tidak dimaksudkan untuk mempengaruhi hakim."
+      },
+      {
+        "q": "Dalam hal hakim menerima gratifikasi, hakim harus segera melaporkan kepada Komisi Pemberantasan Korupsi (KPK), Ketua Muda Pengawasan Mahkamah Agung, dan Ketua Komisi Yudisial (KY) paling lambat …. hari kerja terhitung sejak tanggal gratifikasi diterima.",
+        "options": [
+          "7 hari kerja",
+          "14 hari kerja",
+          "30 hari kerja",
+          "60 hari kerja"
+        ],
+        "correct": 1,
+        "explanation": "Sesuai aturan, hakim wajib melapor paling lambat 14 hari kerja untuk menjaga integritas dan transparansi."
+      },
+      {
+        "q": "Mantan hakim dianjurkan dan sedapat mungkin tidak menjalankan pekerjaan sebagai advokat di pengadilan, terutama di lingkungan peradilan tempat ia bekerja sekurang-kurangnya … tahun setelah pensiun atau berhenti sebagai hakim.",
+        "options": [
+          "1 tahun",
+          "2 tahun",
+          "3 tahun",
+          "4 tahun"
+        ],
+        "correct": 2,
+        "explanation": "Masa jeda minimal 3 tahun agar tidak menimbulkan konflik kepentingan dan menjaga wibawa peradilan."
+      },
+      {
+        "q": "Definisi dari keluarga hakim adalah….",
+        "options": [
+          "Keluarga sedarah atau semenda sampai derajat kesatu atau hubungan suami/isteri",
+          "Keluarga sedarah atau semenda sampai derajat ketiga atau hubungan suami/isteri",
+          "Keluarga sedarah atau semenda sampai derajat ketiga atau hubungan suami/isteri meskipun sudah bercerai",
+          "Keluarga sedarah atau semenda sampai derajat kedua atau hubungan suami/isteri meskipun sudah bercerai"
+        ],
+        "correct": 2,
+        "explanation": "Definisi keluarga hakim mencakup sedarah atau semenda sampai derajat ketiga serta pasangan meskipun sudah bercerai."
+      },
+      {
+        "q": "Apa yang dimaksud dengan prinsip imparsialitas?",
+        "options": [
+          "Hakim harus bersikap tidak memihak dalam menjalankan tugasnya",
+          "Hakim harus cepat dalam memutus perkara",
+          "Hakim harus mencari keuntungan pribadi",
+          "Hakim harus berpihak kepada korban"
+        ],
+        "correct": 0,
+        "explanation": "Imparsialitas berarti hakim netral, tidak memihak salah satu pihak demi keadilan objektif."
+      },
+      {
+        "q": "Seorang hakim diketahui mengomentari sebuah perkara di media sosial. Ini merupakan pelanggaran terhadap prinsip:",
+        "options": [
+          "Profesionalisme",
+          "Integritas",
+          "Berperilaku arif dan bijaksana",
+          "Menjunjung tinggi harga diri"
+        ],
+        "correct": 1,
+        "explanation": "Integritas menuntut hakim menjaga kerahasiaan perkara dan tidak berkomentar sembarangan di ruang publik."
+      },
+      {
+        "q": "Salah satu bentuk menjaga integritas hakim adalah dengan….",
+        "options": [
+          "Membatasi pertemanan di media sosial",
+          "Menjaga jarak dari godaan suap, gratifikasi dan konflik kepentingan",
+          "Menghindari pergaulan dengan sesama hakim",
+          "Tidak membuat putusan yang kontroversial"
+        ],
+        "correct": 1,
+        "explanation": "Integritas hakim diwujudkan dengan sikap tegas menolak gratifikasi, suap, dan menghindari konflik kepentingan."
+      }
+    ]
+  },
+  {
+    "id": "ma-sistem-kamar",
+    "title": "Mahkamah Agung & Sistem Kamar",
+    "questions": [
+      {
+        "q": "Pedoman Sistem Kamar pada Mahkamah Agung diatur dalam?",
+        "options": [
+          "Keputusan Ketua MA RI No: 213/KMA/SK/XII/2015",
+          "Keputusan Ketua MA RI No: 213/KMA/SK/XII/2014",
+          "Keputusan Ketua MA RI No: 214/KMA/SK/XII/2014",
+          "Keputusan Ketua MA RI No: 214/KMA/SK/XII/2015"
+        ],
+        "correct": 0,
+        "explanation": "Pedoman Sistem Kamar diatur dalam Keputusan Ketua MA No. 213/KMA/SK/XII/2015 untuk meningkatkan konsistensi putusan."
+      },
+      {
+        "q": "Ketua, Wakil Ketua, Ketua Muda, dan Hakim Anggota MA diberhentikan dengan hormat dari jabatannya jika sudah berusia?",
+        "options": [
+          "68 tahun",
+          "75 tahun",
+          "70 tahun",
+          "65 tahun"
+        ],
+        "correct": 2,
+        "explanation": "Batas usia pensiun Hakim Agung adalah 70 tahun (UU No. 5 Tahun 2004 jo. UU No. 3 Tahun 2009)."
+      },
+      {
+        "q": "Yang bukan merupakan syarat menjadi Hakim Agung ialah...",
+        "options": [
+          "WNI",
+          "Bertaqwa terhadap Tuhan YME",
+          "Berijazah sarjana hukum/keahlian hukum",
+          "Berusia min. 60 tahun",
+          "Sehat jasmani dan rohani f. Berpengalaman min. 15 tahun jadi hakim termasuk 5 tahun jadi hakim tinggi Pilihan:",
+          "a, c, dan d",
+          "d dan f",
+          "a dan c",
+          "a dan b"
+        ],
+        "correct": 6,
+        "explanation": "d dan f Penjelasan: Syarat usia min. Hakim Agung adalah 45 tahun, bukan"
+      },
+      {
+        "q": "Pengalaman juga min. 20 tahun, bukan 15. 5. Siapa yang menjabat sebagai Wakil Ketua Bidang Yudisial?",
+        "options": [
+          "Dr. Prim Haryadi, S.H., M.H.",
+          "Suharto, S.H., M.Hum.",
+          "Prof. Dr. H. Sunarto, S.H., M.H.",
+          "Dr. Yasardin, S.H., M.Hum."
+        ],
+        "correct": 1,
+        "explanation": "Prof. Dr. H. Sunarto menjabat sebagai Wakil Ketua MA bidang Yudisial (update 2025)."
+      },
+      {
+        "q": "Panitera Pengganti pada masing-masing kamar diangkat oleh?",
+        "options": [
+          "Panitera MA",
+          "Ketua masing-masing kamar",
+          "Ketua MA",
+          "Ketua MA dan Panitera MA"
+        ],
+        "correct": 2,
+        "explanation": "Ketua MA sebagai pimpinan tertinggi berwenang mengangkat panitera pengganti."
+      },
+      {
+        "q": "Hakim Ad-Hoc hanya terdapat dalam Kamar Pidana dan Kamar Perdata.",
+        "options": [
+          "Salah",
+          "Benar"
+        ],
+        "correct": 0,
+        "explanation": "Hakim Ad-Hoc juga ada di kamar lain, misalnya TUN (tipikor)"
+      },
+      {
+        "q": "Mahkamah Agung didirikan pada tanggal?",
+        "options": [
+          "18 Agustus 1945",
+          "19 Agustus 1946",
+          "19 Agustus 1945",
+          "18 Agustus 1946"
+        ],
+        "correct": 2,
+        "explanation": "MA didirikan pada 19 Agustus 1945 melalui sidang PPKI sehari setelah Proklamasi"
+      },
+      {
+        "q": "Siapakah Ketua Mahkamah Agung RI pertama?",
+        "options": [
+          "Mr. R. Satochid Kartanegara",
+          "Mr. Soebekti",
+          "Kusumah Atmaja",
+          "Mr. Husen Tirtaamidjaja"
+        ],
+        "correct": 2,
+        "explanation": "Prof. Dr. Mr. Kusumah Atmaja adalah Ketua MA pertama."
+      },
+      {
+        "q": "Berikut yang merupakan wewenang Mahkamah Agung, antara lain:",
+        "options": [
+          "Wewenang lain yang diberikan UU",
+          "Mengadili perkara pada tingkat kasasi",
+          "Menguji Peraturan di bawah UU terhadap UU",
+          "Menguji Peraturan terhadap UUD 1945"
+        ],
+        "correct": 3,
+        "explanation": "a, b, c Penjelasan: MA berwenang kasasi, uji peraturan di bawah UU terhadap UU, serta wewenang lain sesuai UU. Menguji terhadap UUD adalah kewenangan MK."
+      },
+      {
+        "q": "Ketua MA RI yang menjabat sejak 2001 sampai 2008 ialah...",
+        "options": [
+          "Dr. Harifin A. Tumpa",
+          "Prof. Dr. H. Bagir Manan, S.H., MCL.",
+          "Purwoto Gandasubrata",
+          "Prof. Dr. M. Hatta Ali"
+        ],
+        "correct": 1,
+        "explanation": "Bagir Manan menjabat sebagai Ketua MA dari 2001– 2008."
+      },
+      {
+        "q": "Dalam UUD 1945, wewenang Mahkamah Agung diatur dalam Pasal...",
+        "options": [
+          "Pasal 23",
+          "Pasal 24A",
+          "Pasal 22",
+          "Pasal 21A"
+        ],
+        "correct": 1,
+        "explanation": "Pasal 24A UUD 1945 mengatur wewenang MA."
+      },
+      {
+        "q": "Kamar Tata Usaha Negara terdiri atas: Ketua Kamar, Hakim Agung, Hakim Ad-Hoc, Panitera Muda Kamar, Panitera Pengganti.",
+        "options": [
+          "Salah",
+          "Benar"
+        ],
+        "correct": 1,
+        "explanation": "Susunan organisasi kamar TUN memang demikian."
+      },
+      {
+        "q": "Hakim Agung dapat diangkat tidak berdasarkan sistem karier dengan salah satu syaratnya ialah berpengalaman sekurang- kurangnya 25 tahun.",
+        "options": [
+          "Benar",
+          "Salah"
+        ],
+        "correct": 0,
+        "explanation": "Hakim Agung non-karier bisa dari praktisi/akademisi hukum dengan pengalaman ≥ 25 tahun."
+      },
+      {
+        "q": "Prof. Dr. H. Yulius, S.H., M.H. menjabat sebagai?",
+        "options": [
+          "Ketua Kamar Pidana",
+          "Ketua Kamar Pembinaan",
+          "Ketua Kamar Agama",
+          "Ketua Kamar Tata Usaha Negara"
+        ],
+        "correct": 3,
+        "explanation": "Prof. Dr. H. Yulius menjabat sebagai Ketua Kamar TUN di MA RI."
+      }
+    ]
+  },
+  {
+    "id": "seputar-ma-mk-ky",
+    "title": "Seputar MA, MK, dan KY",
+    "questions": [
+      {
+        "q": "Kekuasaan kehakiman menurut Pasal 24 UUD 1945 adalah …",
+        "options": [
+          "Kekuasaan legislatif yang merdeka",
+          "Kekuasaan eksekutif yang merdeka",
+          "Kekuasaan merdeka untuk menyelenggarakan peradilan",
+          "Kekuasaan rakyat yang merdeka"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 24 UUD 1945 menyatakan kekuasaan kehakiman adalah kekuasaan merdeka untuk menyelenggarakan peradilan guna menegakkan hukum dan keadilan."
+      },
+      {
+        "q": "Siapa saja pelaksana kekuasaan kehakiman menurut UUD 1945?",
+        "options": [
+          "MA dan DPR",
+          "MA, MK, dan KY",
+          "MA, MK, dan badan peradilan di bawahnya",
+          "Presiden dan MA"
+        ],
+        "correct": 2,
+        "explanation": "Kekuasaan kehakiman dilaksanakan oleh MA, badan peradilan di bawahnya (umum, agama, militer, TUN), dan MK."
+      },
+      {
+        "q": "MA berwenang melakukan kasasi dan …",
+        "options": [
+          "Menguji undang-undang terhadap UUD",
+          "Menguji peraturan di bawah undang-undang terhadap undang- undang",
+          "Memutus pembubaran partai politik",
+          "Mengadili Presiden"
+        ],
+        "correct": 1,
+        "explanation": "Pasal 24A UUD 1945 menegaskan MA berwenang mengadili kasasi dan menguji peraturan di bawah UU terhadap UU."
+      },
+      {
+        "q": "Ketua dan Wakil Ketua MA dipilih oleh …",
+        "options": [
+          "Presiden",
+          "DPR",
+          "Hakim Agung",
+          "KY"
+        ],
+        "correct": 2,
+        "explanation": "Ketua dan Wakil Ketua MA dipilih dari dan oleh Hakim Agung."
+      },
+      {
+        "q": "MA berkedudukan di …",
+        "options": [
+          "Kota Bandung",
+          "DKI Jakarta",
+          "Kota Surabaya",
+          "Makassar"
+        ],
+        "correct": 1,
+        "explanation": "Menurut UU No. 14 Tahun 1985, MA berkedudukan di ibukota negara, yang saat ini masih DKI Jakarta."
+      },
+      {
+        "q": "Hakim Agung dilarang merangkap jabatan sebagai berikut, kecuali …",
+        "options": [
+          "Pengusaha",
+          "Penasihat hukum",
+          "Wali atau pengampu",
+          "Dosen hukum"
+        ],
+        "correct": 3,
+        "explanation": "UU melarang Hakim Agung merangkap sebagai pelaksana putusan MA, wali/pengampu, penasihat hukum, dan pengusaha. Dosen tidak disebutkan."
+      },
+      {
+        "q": "Penangkapan Hakim Agung hanya dapat dilakukan dengan …",
+        "options": [
+          "Izin KY",
+          "Izin Presiden setelah persetujuan Jaksa Agung",
+          "Izin Jaksa Agung setelah persetujuan Presiden",
+          "Keputusan DPR"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 17 UU MA menyebutkan penangkapan/penahanan Hakim Agung hanya dapat dilakukan Jaksa Agung dengan persetujuan Presiden, kecuali tertangkap tangan."
+      },
+      {
+        "q": "MA memutus peninjauan kembali (PK) pada tingkat …",
+        "options": [
+          "Banding",
+          "Pertama dan terakhir",
+          "Kasasi",
+          "Arbitrase"
+        ],
+        "correct": 1,
+        "explanation": "MA berwenang memutus PK pada tingkat pertama dan terakhir."
+      },
+      {
+        "q": "Jumlah maksimal Hakim Agung menurut UU No. 5 Tahun 2004 adalah …",
+        "options": [
+          "50 orang",
+          "60 orang",
+          "70 orang",
+          "80 orang"
+        ],
+        "correct": 1,
+        "explanation": "Pasal 4 menyebutkan jumlah Hakim Agung maksimal 60 orang."
+      },
+      {
+        "q": "Masa jabatan Ketua MA adalah …",
+        "options": [
+          "3 tahun",
+          "4 tahun",
+          "5 tahun",
+          "Seumur hidup"
+        ],
+        "correct": 2,
+        "explanation": "Ketua, Wakil Ketua, dan Ketua Muda MA memiliki masa jabatan 5 tahun."
+      },
+      {
+        "q": "Panitera MA diangkat dan diberhentikan oleh …",
+        "options": [
+          "KY",
+          "DPR",
+          "Presiden atas usul KMA",
+          "Ketua MA langsung"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 21 UU No. 5/2004 menyebut Panitera MA diangkat Presiden atas usul KMA."
+      },
+      {
+        "q": "Syarat usia minimal calon Hakim Agung adalah …",
+        "options": [
+          "40 tahun",
+          "45 tahun",
+          "50 tahun",
+          "55 tahun"
+        ],
+        "correct": 1,
+        "explanation": "Syarat usia minimal calon Hakim Agung adalah 45 tahun."
+      },
+      {
+        "q": "Siapa yang mengusulkan calon Hakim Agung ke DPR?",
+        "options": [
+          "Presiden",
+          "KY",
+          "MK",
+          "Ketua MA"
+        ],
+        "correct": 1,
+        "explanation": "Calon Hakim Agung diusulkan KY ke DPR untuk disetujui."
+      },
+      {
+        "q": "Berapa lama DPR wajib memilih calon Hakim Agung sejak nama diterima?",
+        "options": [
+          "7 hari sidang",
+          "14 hari sidang",
+          "30 hari sidang",
+          "60 hari sidang"
+        ],
+        "correct": 2,
+        "explanation": "DPR harus memilih calon Hakim Agung paling lama 30 hari sidang sejak nama diterima."
+      },
+      {
+        "q": "Hakim Agung diberhentikan dengan hormat karena alasan berikut, kecuali …",
+        "options": [
+          "Meninggal dunia",
+          "Usia 70 tahun",
+          "Permintaan sendiri",
+          "Mengajukan PK"
+        ],
+        "correct": 3,
+        "explanation": "Pemberhentian dengan hormat tidak termasuk mengajukan PK."
+      },
+      {
+        "q": "Majelis Kehormatan Hakim (MKH) terdiri dari …",
+        "options": [
+          "3 Hakim Agung + 4 anggota KY",
+          "4 Hakim Agung + 3 anggota KY",
+          "5 Hakim Agung + 2 anggota KY",
+          "6 Hakim Agung + 1 anggota KY"
+        ],
+        "correct": 0,
+        "explanation": "MKH dibentuk oleh MA–KY terdiri dari 3 Hakim Agung + 4 anggota KY."
+      },
+      {
+        "q": "MA melakukan pengawasan tertinggi terhadap …",
+        "options": [
+          "KY",
+          "MK",
+          "Peradilan di bawahnya",
+          "Presiden"
+        ],
+        "correct": 2,
+        "explanation": "MA berwenang mengawasi peradilan di bawahnya, administrasi, dan keuangan."
+      },
+      {
+        "q": "Pengawasan eksternal terhadap tingkah laku Hakim Agung dilakukan oleh …",
+        "options": [
+          "DPR",
+          "MA",
+          "KY",
+          "Presiden"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 32A menyebutkan pengawasan eksternal dilakukan oleh KY."
+      },
+      {
+        "q": "Biaya kepaniteraan termasuk dalam …",
+        "options": [
+          "APBN langsung",
+          "PNBP (Penerimaan Negara Bukan Pajak)",
+          "APBD",
+          "Anggaran MA tetap"
+        ],
+        "correct": 1,
+        "explanation": "Biaya kepaniteraan merupakan PNBP."
+      },
+      {
+        "q": "MK berwenang mengadili dengan putusan yang bersifat …",
+        "options": [
+          "Kasasi",
+          "Sementara",
+          "Final",
+          "Banding"
+        ],
+        "correct": 2,
+        "explanation": "Putusan MK bersifat final dan mengikat."
+      },
+      {
+        "q": "Jumlah hakim konstitusi di MK adalah …",
+        "options": [
+          "7 orang",
+          "9 orang",
+          "11 orang",
+          "13 orang"
+        ],
+        "correct": 1,
+        "explanation": "MK memiliki 9 hakim konstitusi."
+      },
+      {
+        "q": "Pembagian pengusulan hakim MK adalah …",
+        "options": [
+          "3 MA, 3 DPR, 3 Presiden",
+          "3 DPR, 3 KY, 3 Presiden",
+          "4 DPR, 3 MA, 2 Presiden",
+          "5 DPR, 2 MA, 2 Presiden"
+        ],
+        "correct": 0,
+        "explanation": "Hakim konstitusi: 3 diajukan MA, 3 DPR, 3 Presiden."
+      },
+      {
+        "q": "KY memiliki kewenangan utama …",
+        "options": [
+          "Menguji undang-undang",
+          "Mengawasi Presiden",
+          "Mengusulkan pengangkatan Hakim Agung dan menjaga kehormatan hakim",
+          "Mengadili kasasi"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 24B UUD 1945: KY mengusulkan pengangkatan Hakim Agung dan menjaga kehormatan hakim."
+      },
+      {
+        "q": "Anggota KY diangkat oleh Presiden dengan persetujuan …",
+        "options": [
+          "DPR",
+          "MA",
+          "MK",
+          "BPK"
+        ],
+        "correct": 0,
+        "explanation": "Anggota KY diangkat Presiden dengan persetujuan DPR."
+      },
+      {
+        "q": "Hubungan MA dan KY diwujudkan melalui …",
+        "options": [
+          "Komisi gabungan",
+          "Tim Penghubung",
+          "Panitia Khusus",
+          "Rapat Umum"
+        ],
+        "correct": 1,
+        "explanation": "MA dan KY membentuk Tim Penghubung untuk menjaga kehormatan dan perilaku hakim."
+      }
+    ]
+  },
+  {
+    "id": "tugas-kewenangan-ma",
+    "title": "Tugas dan Kewenangan Mahkamah Agung",
+    "questions": [
+      {
+        "q": "Kewenangan Yudikatif Berdasarkan Pasal 24A ayat (1) UUD NRI Tahun 1945, Mahkamah Agung berwenang mengadili pada tingkat kasasi. Apa yang menjadi fokus pemeriksaan dalam tingkat kasasi?",
+        "options": [
+          "Meninjau ulang fakta dan bukti yang disajikan di pengadilan tingkat pertama dan banding.",
+          "Menguji apakah suatu peraturan pemerintah bertentangan dengan undang-undang.",
+          "Memeriksa putusan pengadilan di bawahnya apakah sudah benar dalam penerapan dan penafsiran hukum.",
+          "Mengadili perkara pidana yang ancaman hukumannya di atas 5 tahun."
+        ],
+        "correct": 2,
+        "explanation": "Kasasi adalah upaya hukum untuk memeriksa apakah ada kesalahan penerapan hukum, penafsiran hukum, atau kelalaian dalam hukum acara oleh pengadilan tingkat banding. Fokusnya bukan pada fakta, melainkan pada aspek hukumnya."
+      },
+      {
+        "q": "Kewenangan Uji Materiil Mahkamah Agung berwenang melakukan uji materiil. Peraturan perundang-undangan apa yang menjadi objek uji materiil oleh Mahkamah Agung?",
+        "options": [
+          "Undang-Undang terhadap Undang-Undang Dasar 1945.",
+          "Peraturan di bawah undang-undang terhadap undang-undang.",
+          "Undang-Undang Dasar 1945 terhadap konstitusi lain.",
+          "Peraturan Daerah terhadap Peraturan Presiden."
+        ],
+        "correct": 1,
+        "explanation": "Kewenangan uji materiil Mahkamah Agung adalah menguji peraturan perundang-undangan di bawah undang-undang, seperti Peraturan Pemerintah, Peraturan Presiden, atau Peraturan Menteri, apakah bertentangan dengan undang-undang yang ada di atasnya. Uji materiil undang-undang terhadap UUD 1945 adalah kewenangan Mahkamah Konstitusi."
+      },
+      {
+        "q": "Pengawasan Peradilan Sebagai pengadilan tertinggi, Mahkamah Agung juga memiliki kewenangan pengawasan. Lingkungan peradilan mana saja yang berada di bawah pengawasan Mahkamah Agung?",
+        "options": [
+          "Peradilan Umum, Peradilan Agama, dan Peradilan Niaga.",
+          "Peradilan Umum, Peradilan Tata Usaha Negara, dan Peradilan Khusus.",
+          "Peradilan Umum, Peradilan Agama, Peradilan Militer, dan Peradilan Tata Usaha Negara.",
+          "Peradilan Militer, Peradilan HAM, dan Peradilan Tata Usaha Negara."
+        ],
+        "correct": 2,
+        "explanation": "Mahkamah Agung adalah puncak dari empat lingkungan peradilan di Indonesia, yaitu Peradilan Umum, Peradilan Agama, Peradilan Militer, dan Peradilan Tata Usaha Negara. Pengawasan Mahkamah Agung mencakup aspek teknis yudisial dan administratif."
+      },
+      {
+        "q": "Fungsi Administratif Menurut Undang-Undang Nomor 48 Tahun 2009 tentang Kekuasaan Kehakiman, Mahkamah Agung bertanggung jawab atas urusan administrasi, organisasi, dan keuangan seluruh badan peradilan. Siapakah yang membantu Mahkamah Agung dalam melaksanakan fungsi administratif ini?",
+        "options": [
+          "Komisi Yudisial.",
+          "Kementerian Keuangan.",
+          "Sekretariat Mahkamah Agung.",
+          "Kejaksaan Agung."
+        ],
+        "correct": 2,
+        "explanation": "Sekretariat Mahkamah Agung adalah unsur pembantu pimpinan Mahkamah Agung yang bertugas dalam penyelenggaraan dukungan teknis, administrasi, organisasi, dan keuangan bagi seluruh badan peradilan di bawah Mahkamah Agung."
+      },
+      {
+        "q": "Pertimbangan Hukum untuk Presiden Mahkamah Agung berwenang memberikan pertimbangan hukum kepada Presiden terkait permohonan grasi. Pertimbangan ini bertujuan untuk?",
+        "options": [
+          "Memberikan persetujuan akhir atas permohonan grasi.",
+          "Menilai apakah permohonan grasi layak diberikan berdasarkan fakta-fakta hukum yang relevan.",
+          "Memeriksa ulang fakta perkara pidana tersebut.",
+          "Menentukan jenis hukuman baru yang akan diberikan kepada narapidana."
+        ],
+        "correct": 1,
+        "explanation": "Pemberian grasi adalah hak prerogatif Presiden. Namun, sebelum Presiden memutuskan, Mahkamah Agung memberikan pertimbangan hukum sebagai salah satu bahan pertimbangan, bukan sebagai penentu akhir."
+      },
+      {
+        "q": "Upaya Hukum Luar Biasa Selain kasasi, Mahkamah Agung juga mengadili pada tingkat Peninjauan Kembali (PK). Kapan suatu perkara dapat diajukan PK?",
+        "options": [
+          "Ketika putusan pengadilan tingkat pertama dianggap tidak adil.",
+          "Ketika ditemukan bukti baru (novum) yang dapat membatalkan putusan yang telah berkekuatan hukum tetap.",
+          "Ketika putusan pengadilan tingkat banding dianggap salah.",
+          "Sebelum suatu putusan pengadilan berkekuatan hukum tetap."
+        ],
+        "correct": 1,
+        "explanation": "Peninjauan Kembali (PK) adalah upaya hukum luar biasa terhadap putusan yang sudah berkekuatan hukum tetap. PK dapat diajukan jika ditemukan bukti baru (novum) atau adanya kekhilafan hakim dalam putusan."
+      },
+      {
+        "q": "Hierarki Peraturan Mahkamah Agung memiliki kewenangan untuk membuat Peraturan Mahkamah Agung (PERMA). Dalam hierarki peraturan perundang- undangan di Indonesia, PERMA setara dengan?",
+        "options": [
+          "Undang-Undang.",
+          "Undang-Undang Dasar 1945.",
+          "Peraturan Pemerintah.",
+          "Peraturan Menteri."
+        ],
+        "correct": 2,
+        "explanation": "Berdasarkan Undang-Undang Nomor 12 Tahun 2011 tentang Pembentukan Peraturan Perundang-undangan, PERMA setara dengan Peraturan Pemerintah dan Peraturan Presiden karena keduanya merupakan peraturan yang dibuat oleh lembaga negara/pemerintahan di luar undang-undang."
+      },
+      {
+        "q": "Pembinaan Hakim Dalam rangka menjaga profesionalisme dan integritas, Mahkamah Agung memiliki kewenangan untuk melakukan pembinaan terhadap hakim di lingkungan peradilan di bawahnya. Bentuk pembinaan yang dilakukan Mahkamah Agung adalah?",
+        "options": [
+          "Pengangkatan dan pemberhentian hakim.",
+          "Pengawasan teknis yudisial.",
+          "Pengawasan perilaku hakim.",
+          "Pemberian sanksi etik kepada hakim yang melanggar."
+        ],
+        "correct": 1,
+        "explanation": "Mahkamah Agung berwenang melakukan pengawasan teknis yudisial, yaitu pengawasan terhadap substansi putusan dan penerapan hukum oleh hakim. Pengawasan perilaku hakim merupakan kewenangan Komisi Yudisial."
+      },
+      {
+        "q": "SEMA (Surat Edaran Mahkamah Agung) Mahkamah Agung sering mengeluarkan Surat Edaran Mahkamah Agung (SEMA) kepada seluruh pengadilan di Indonesia. Apa fungsi utama SEMA?",
+        "options": [
+          "Sebagai dasar untuk menghukum hakim yang melanggar kode etik.",
+          "Sebagai pedoman teknis bagi para hakim dalam memeriksa dan memutus perkara.",
+          "Untuk mengubah putusan pengadilan yang telah berkekuatan hukum tetap.",
+          "Sebagai pengganti undang-undang yang sudah tidak relevan."
+        ],
+        "correct": 1,
+        "explanation": "SEMA berfungsi sebagai petunjuk atau pedoman teknis non-normatif bagi para hakim. SEMA tidak memiliki kekuatan hukum layaknya peraturan perundang-undangan, tetapi menjadi pedoman kerja bagi seluruh hakim di bawah Mahkamah Agung."
+      },
+      {
+        "q": "Peran dalam Penegakan Hukum Salah satu fungsi Mahkamah Agung adalah menciptakan yurisprudensi. Apa yang dimaksud dengan yurisprudensi?",
+        "options": [
+          "Kumpulan undang-undang yang berlaku di suatu negara.",
+          "Teori dan filosofi hukum yang dikembangkan oleh ahli hukum.",
+          "Putusan hakim yang tetap dan menjadi pedoman bagi hakim lain dalam kasus serupa.",
+          "Proses penyelidikan dan penyidikan tindak pidana."
+        ],
+        "correct": 2,
+        "explanation": "Yurisprudensi adalah putusan pengadilan (khususnya Mahkamah Agung) yang telah berkekuatan hukum tetap dan dapat menjadi pedoman bagi hakim lain dalam memutus kasus-kasus yang memiliki kemiripan. Ini berperan penting dalam menjaga kesatuan hukum."
+      },
+      {
+        "q": "Kompetensi Mengadili Pada kasus tertentu, Mahkamah Agung dapat mengadili pada tingkat pertama dan terakhir. Contoh kasus yang termasuk dalam kewenangan ini adalah?",
+        "options": [
+          "Sengketa hasil Pemilu.",
+          "Sengketa hak cipta dan paten.",
+          "Sengketa pembubaran partai politik.",
+          "Sengketa tentang tata cara pemilihan umum."
+        ],
+        "correct": 1,
+        "explanation": "Mahkamah Agung mengadili pada tingkat pertama dan terakhir untuk kasus- kasus tertentu seperti sengketa hak kekayaan intelektual (hak cipta, paten, merek, dll) dan beberapa sengketa perdata khusus lainnya. Sengketa Pemilu adalah kewenangan Mahkamah Konstitusi."
+      },
+      {
+        "q": "Pengaturan Peradilan Pasal 24A ayat (5) UUD NRI Tahun 1945 memberikan kewenangan kepada Mahkamah Agung untuk mengatur lebih lanjut hal-hal yang berkaitan dengan teknis peradilan. Pengaturan ini dibuat dalam bentuk?",
+        "options": [
+          "Peraturan Pemerintah.",
+          "Keputusan Bersama dengan Komisi Yudisial.",
+          "Peraturan Mahkamah Agung (PERMA).",
+          "Undang-Undang."
+        ],
+        "correct": 2,
+        "explanation": "Sesuai dengan UUD 1945, Mahkamah Agung berwenang membuat peraturan yang berkaitan dengan teknis peradilan, yang dituangkan dalam Peraturan Mahkamah Agung (PERMA)."
+      },
+      {
+        "q": "Peran dalam Pengangkatan Hakim Terkait dengan pengangkatan Hakim Agung, Mahkamah Agung berperan dalam?",
+        "options": [
+          "Mengusulkan calon Hakim Agung kepada Komisi Yudisial.",
+          "Melakukan uji kelayakan dan kepatutan terhadap calon Hakim Agung yang diusulkan Komisi Yudisial.",
+          "Menyetujui atau menolak calon Hakim Agung yang diusulkan oleh Komisi Yudisial.",
+          "Memberikan pengusulan kepada Komisi Yudisial selain unsur Pemerintah dan Masyarakat."
+        ],
+        "correct": 3,
+        "explanation": "Berdasarkan UU Nomor 3 Tahun 2009, Komisi Yudisial mengusulkan calon Hakim Agung kepada DPR, dan DPR memberikan persetujuan. Mahkamah Agung memberikan pengusulan terhadap Komisi Yudisial."
+      },
+      {
+        "q": "Hubungan dengan Komisi Yudisial Bagaimana hubungan kewenangan antara Mahkamah Agung dan Komisi Yudisial berdasarkan UU Nomor 14 Tahun 2009 tentang Kekuasaan Kehakiman?",
+        "options": [
+          "Mahkamah Agung dan Komisi Yudisial memiliki kewenangan yang sama dalam pengawasan hakim.",
+          "Komisi Yudisial memiliki kewenangan pengawasan perilaku hakim, sedangkan Mahkamah Agung mengawasi teknis yudisial.",
+          "Mahkamah Agung adalah atasan langsung dari Komisi Yudisial.",
+          "Komisi Yudisial adalah atasan langsung dari Mahkamah Agung."
+        ],
+        "correct": 1,
+        "explanation": "Hubungan kewenangan antara Mahkamah Agung dan Komisi Yudisial adalah sinergis dan saling melengkapi, bukan hirarkis. Komisi Yudisial fokus pada pengawasan perilaku hakim, sedangkan Mahkamah Agung fokus pada pengawasan teknis yudisial (mengenai putusan dan penerapan hukum)."
+      },
+      {
+        "q": "Pemecatan Hakim Jika seorang hakim terbukti melakukan pelanggaran berat, kewenangan untuk memberhentikan hakim tersebut berada di tangan?",
+        "options": [
+          "Mahkamah Agung.",
+          "Komisi Yudisial.",
+          "Presiden atas usul Mahkamah Agung.",
+          "Presiden atas usul Mahkamah Agung dan persetujuan Komisi Yudisial."
+        ],
+        "correct": 3,
+        "explanation": "Berdasarkan Undang-Undang Kekuasaan Kehakiman dan UU tentang Komisi Yudisial, pemberhentian hakim, termasuk Hakim Agung, diusulkan oleh Mahkamah Agung dan Komisi Yudisial, kemudian diputuskan oleh Presiden."
+      },
+      {
+        "q": "Kasasi dan Novum Manakah dari pernyataan berikut yang benar mengenai perbedaan antara kasasi dan peninjauan kembali?",
+        "options": [
+          "Kasasi memeriksa putusan yang sudah berkekuatan hukum tetap, sedangkan PK memeriksa yang belum.",
+          "Kasasi hanya dapat diajukan satu kali, sedangkan PK dapat diajukan lebih dari satu kali.",
+          "Kasasi bertujuan untuk memeriksa penerapan hukum, sedangkan PK diajukan berdasarkan adanya bukti baru (novum).",
+          "Kasasi hanya untuk perkara perdata, sedangkan PK untuk perkara pidana."
+        ],
+        "correct": 2,
+        "explanation": "Ini adalah perbedaan paling fundamental. Kasasi adalah upaya hukum biasa yang memeriksa penerapan hukum, sementara PK adalah upaya hukum luar biasa yang syaratnya harus ada bukti baru (novum)."
+      },
+      {
+        "q": "Putusan PK Jika permohonan Peninjauan Kembali (PK) dikabulkan oleh Mahkamah Agung, apa dampak hukumnya terhadap putusan sebelumnya?",
+        "options": [
+          "Putusan sebelumnya menjadi tidak berlaku dan Mahkamah Agung akan menerbitkan putusan baru.",
+          "Putusan sebelumnya tetap berlaku, tetapi ditambah dengan pertimbangan baru dari Mahkamah Agung.",
+          "Putusan sebelumnya akan diubah sesuai dengan pertimbangan Mahkamah Agung.",
+          "Putusan sebelumnya dibatalkan dan perkara dikembalikan ke pengadilan tingkat pertama."
+        ],
+        "correct": 0,
+        "explanation": "Jika PK dikabulkan, putusan yang diajukan PK akan dibatalkan, dan Mahkamah Agung akan memutus sendiri perkara tersebut dengan putusan baru."
+      },
+      {
+        "q": "Hubungan dengan Mahkamah Konstitusi Apa perbedaan kewenangan uji materiil antara Mahkamah Agung dan Mahkamah Konstitusi?",
+        "options": [
+          "Mahkamah Agung menguji undang-undang, Mahkamah Konstitusi menguji peraturan di bawah undang-undang.",
+          "Keduanya memiliki kewenangan yang sama, tetapi Mahkamah Agung fokus pada perkara pidana dan MK pada perkara perdata.",
+          "Mahkamah Agung menguji peraturan di bawah undang-undang terhadap undang-undang, sedangkan MK menguji undang-undang terhadap UUD 1945.",
+          "Keduanya menguji undang-undang terhadap UUD 1945, tetapi dengan alasan yang berbeda."
+        ],
+        "correct": 2,
+        "explanation": "Ini adalah pembagian kewenangan yang jelas antara dua lembaga tersebut. Mahkamah Konstitusi berwenang menguji konstitusionalitas undang-undang, sementara Mahkamah Agung berwenang menguji legalitas peraturan di bawah undang-undang."
+      },
+      {
+        "q": "Wewenang Pemberian Grasi Berdasarkan UU No. 3 Tahun 2009, Mahkamah Agung harus memberikan pertimbangan hukum terkait permohonan grasi kepada Presiden dalam jangka waktu?",
+        "options": [
+          "7 hari.",
+          "14 hari.",
+          "30 hari.",
+          "60 hari."
+        ],
+        "correct": 2,
+        "explanation": "Undang- Undang telah menetapkan batasan waktu 30 hari bagi Mahkamah Agung untuk memberikan pertimbangan hukum sejak permintaan grasi diterima dari Presiden."
+      },
+      {
+        "q": "Pengadilan Khusus Mahkamah Agung juga memiliki kewenangan dalam membentuk pengadilan khusus. Manakah dari pengadilan berikut yang merupakan bagian dari pengadilan khusus yang berada di bawah Mahkamah Agung?",
+        "options": [
+          "Pengadilan Militer.",
+          "Pengadilan Niaga.",
+          "Pengadilan Agama.",
+          "Pengadilan Negeri."
+        ],
+        "correct": 1,
+        "explanation": "Pengadilan Niaga adalah salah satu pengadilan khusus yang dibentuk di lingkungan Peradilan Umum. Pengadilan Militer dan Pengadilan Agama adalah lingkungan peradilan yang berbeda, sementara Pengadilan Negeri adalah pengadilan umum tingkat pertama."
+      }
+    ]
+  },
+  {
+    "id": "peradilan-agama",
+    "title": "Struktur & Kompetensi Peradilan Agama dan Mahkamah Syar’iyah",
+    "questions": [
+      {
+        "q": "Yang bukan termasuk dalam dalam struktur Pengadilan Tinggi Agama…",
+        "options": [
+          "Panitera Muda Banding",
+          "Panitera Muda Hukum",
+          "Panitera Muda Permohonan",
+          "Panitera Muda Gugatan",
+          "c dan d"
+        ],
+        "correct": 4,
+        "explanation": "Diatur dalam Pasal 89 Perma 7 Tahun 2015 Tentang Organisasi Dan Tata Kerja Kepaniteraan Dan Kesekretariatan Peradilan yang berbunyi : “Kepaniteraan Pengadilan Tinggi Agama, terdiri atas: a. Panitera Muda Banding; dan b. Panitera Muda Hukum.”"
+      },
+      {
+        "q": "Yang tidak termasuk dalam struktur Kepaniteraan Mahkamah Syar’iyah Provinsi…",
+        "options": [
+          "Panitera Muda Banding",
+          "Panitera Muda Jinayah",
+          "Panitera Muda Hukum",
+          "Panitera Muda Gugatan"
+        ],
+        "correct": 3,
+        "explanation": "Diatur dalam Pasal 128 Perma 7 Tahun 2015 Tentang Organisasi Dan Tata Kerja Kepaniteraan Dan Kesekretariatan Peradilan yang berbunyi : “Kepaniteraan Mahkamah Syar’iyah Provinsi, terdiri atas: a. Panitera Muda Banding; b. Panitera Muda Jinayah; dan c. Panitera Muda Hukum.” Keputusan Presiden Republik Indonesia Nomor 11 Tahun 2003 Tentang Mahkamah Syar'iyah Dan Mahkamah Syar'iyah Provinsi Di Provinsi Nanggroe Aceh Darussalam."
+      },
+      {
+        "q": "Asas yang melekat dalam kompetensi absolut Pengadilan Agama dalam menerima, memeriksa, memutus dan menyelesaikan perkara-perkara…",
+        "options": [
+          "Asas Hukum Islam",
+          "Asas Personalitas Keislaman",
+          "Asas Ahlul sunnah wal jamaah",
+          "Asas Hukum islam dan sunnah"
+        ],
+        "correct": 1,
+        "explanation": "Patokan keislaman seseorang berdasarkan KTP. Kewenangan Pengadilan Agama berdasarkan personalitas keislaman ini juga meliputi hubungan hukum yang mendasari suatu sengketa. Selain itu Abdul Manan menjelaskan , identitas keislaman juga ditentukan: Pada saat terjadinya hubungan hukum, Pihak pihak beragama islam, Hubungan hukum yang mereka lakukan berdasarkan hukum islam terlepas setelah hubungan hukum tersebut salah satunya keluar dari islam."
+      },
+      {
+        "q": "Perkara ekonomi syariah secara litigasi menjadi kewenangan absolut/mutlak pengadilan agama, sedangkan penyelesaiannya secara non litigasi dilakukan sesuai akad di atur dalam…",
+        "options": [
+          "SEMA No. 2 Tahun 2017",
+          "SEMA No. 2 Tahun 2018",
+          "SEMA No. 2 Tahun 2019",
+          "SEMA No. 2 Tahun 2020",
+          "SEMA No. 2 Tahun 2016"
+        ],
+        "correct": 2,
+        "explanation": "Jawaban yang tepat adalah “SEMA No. 2 Tahun 2019”."
+      },
+      {
+        "q": "Pelanggaran Prinsip syariah yang dilakukan nasabah atau konsumen atau pelaku usaha sektor Ekonomi Syarah meruapakan kewenangan…",
+        "options": [
+          "PA",
+          "PN",
+          "PTUN",
+          "Lembaga Sektor Ekonomi Terkait"
+        ],
+        "correct": 0,
+        "explanation": "Jawaban yang tepat adalah “PA”."
+      },
+      {
+        "q": "Jika objek Pengosongan hasil lelang eksekusi hak tanggungan dan ekselusi jaminan fidusia yang lahir dari akad syariah dikuasi pihak ketiga, maka pengadilan yang berwenang…",
+        "options": [
+          "PA",
+          "PN",
+          "PTUN",
+          "KPKNL"
+        ],
+        "correct": 1,
+        "explanation": "SEMA No. 3 Tahun 2023"
+      },
+      {
+        "q": "Salah satu kewenangan absolut baru Peradilan Agama sebagaimana dinyatakan dalam Pasal 49 UU No. 7/1989 sebagaimana telah diubah dengan UU No. 50/2009, adalah:",
+        "options": [
+          "Cerai Gugat",
+          "Hibah",
+          "Wakaf",
+          "Ekonomi Syari’ah"
+        ],
+        "correct": 3,
+        "explanation": "Ps. 49 UU No.3/2006 jo.UU No.7/1989 Tentang Peradilan Agama"
+      },
+      {
+        "q": "Mahkamah Syar'iyah berwenang memeriksa, mengadili, memutus, dan menyelesaikan perkara yang meliputi, kecuali…",
+        "options": [
+          "ahwal al-syakhsiyah,",
+          "mu’amalah",
+          "jinayah",
+          "mauquf alaih UU No 11 tahun 2006"
+        ],
+        "correct": 3,
+        "explanation": "Jawaban yang tepat adalah “mauquf alaih UU No 11 tahun 2006”."
+      },
+      {
+        "q": "Permohonan cerai talak yang mana Termohon dengan sengaja meninggalkan tempat kediaman bersama, tanpa izin Pemohon (suami) maka kompetensi relatif ke PA…",
+        "options": [
+          "Pemohon",
+          "Termohon",
+          "KUA setempat",
+          "Jakarta Pusat"
+        ],
+        "correct": 0,
+        "explanation": "Undang-Undang Nomor 7 Tahun 1989 tentang Peradilan Agama (UU No. 7/1989) Pasal 66 ayat (2). Undang-Undang Nomor 3 Tahun 2006 tentang Perubahan Undang-Undang Nomor 7 Tahun 1989. Kompilasi Hukum Islam (KHI)."
+      },
+      {
+        "q": "Gugatan perceraian yang diajukan oleh isteri akan tetapi tempat kediaman suaminya tidak jelas atau tidak diketahui atau tidak memiliki tempat kediaman yang jelas, gugatan diajukan ke Pengadilan Agama…",
+        "options": [
+          "Jakarta Pusat",
+          "Yang meliputi KUA yang mencatat pernikahan uami dan isteri",
+          "Kediaman Penggugat",
+          "A& B Benar"
+        ],
+        "correct": 2,
+        "explanation": "Pasal 20 ayat (2) Peraturan Pemerintah Nomor 9 Tahun 1975 tentang Pelaksanaan Undang-Undang Perkawinan"
+      },
+      {
+        "q": "Suami berkedudukan di kota A, isteri berkedudukan di kota B. setelah bercerai mereka mengajukan gugatan harta bersama yang mana objek sengketa (tidak bergerak) tersebut berada di kota suami. Dimanakan perkara gugatan harta bersama di ajukan suami…",
+        "options": [
+          "Kota A",
+          "Kota B"
+        ],
+        "correct": 0,
+        "explanation": "Pasal 66 dan 86 UU Peradilan agama dan 118 HIR - Jika perkara harta bersama merupakan komulasi perkara cerai (tidak berdiri sendiri) maka diajukan ke tempat suami/isteri dan untuk pemeriksaan objek dilakukan delegasi ke PA tempat objek tsb. - Jika perkara harta bersama berdiri sendiri : a) asas Forum rei sitae : Jika objek sengketa terdiri dari benda tidak bergerak, sengketa jatuh menjadi kewenangan relatif Pengadilan Negeri di tempat barang itu terletak. b) Actor sequitur forum rei (forum domicile) : yang berwenang mengadili sengketa adalah Pengadilan Negeri di daerah hukum tempat tergugat bertempat tinggal (benda bergerak)."
+      },
+      {
+        "q": "Perceraian perkawinan beda agama (muslim dan non muslim) yang dilangsungkan diluar negeri diajukan ke Pengadilan…",
+        "options": [
+          "PA bagi yang mengajukan muslim",
+          "PN pencatat catatan nikah",
+          "PA kediaman para pihak jika keduanya telah mualaf",
+          "A & C benar"
+        ],
+        "correct": 1,
+        "explanation": "Pasal 39 mengatur mengenai perceraian, termasuk alasan-alasan yang dapat diajukan. Pasal 35 huruf a Undang- Undang Nomor 23 Tahun 2006 tentang Administrasi Kependudukan, yang menyatakan bahwa perkawinan yang ditetapkan oleh pengadilan, termasuk perkawinan beda agama, dapat dicatatkan. Meskipun Undang-Undang Perkawinan tidak secara khusus mengatur perkawinan beda agama, Pasal 2 ayat (1) menyatakan bahwa perkawinan sah jika dilakukan sesuai hukum masing-masing agama dan kepercayaan. Namun, Pasal 35 huruf a Undang-Undang Administrasi Kependudukan memberikan celah untuk pencatatan perkawinan yang ditetapkan oleh Pengadilan."
+      },
+      {
+        "q": "Perkara Jarimah yang menjadi kompetensi Mahkamah syariah, kecuali …",
+        "options": [
+          "Minuman keras",
+          "Judi",
+          "Pemerkosaan",
+          "Pelecehan seksual",
+          "Narkotika"
+        ],
+        "correct": 4,
+        "explanation": "Jawaban yang tepat adalah “Narkotika”."
+      },
+      {
+        "q": "Ketua Kamar Agama Mahkamah Agung RI saat ini dijabat oleh",
+        "options": [
+          "Prof. Dr. H. Amran Suadi, S.H., M.H., M.Hum",
+          "Dr. H. Yasardin, S.H., M.Hum",
+          "Dr. H. Burhan Dahlan, S,H, M.H",
+          "Dwiarso Budi Santiarto,S.H., M.H",
+          "Syamsul Maarif, S.H., L.LM, PhD"
+        ],
+        "correct": 1,
+        "explanation": "Jawaban yang tepat adalah “Dr. H. Yasardin, S.H., M.Hum”."
+      },
+      {
+        "q": "Eksepsi tentang kewenangan absolut dapat diajukan setiap waktu selama proses pemeriksaan berlangsung diatur dalam…",
+        "options": [
+          "Pasal 131 HIR/Pasal 165 RBg",
+          "Pasal 131 HIR/Pasal 162 RBg",
+          "Pasal 132 HIR/Pasal 160 RBg",
+          "Pasal 133 HIR/Pasal 160 RBg",
+          "Pasal 134 HIR/Pasal 160 RBg"
+        ],
+        "correct": 4,
+        "explanation": "Jawaban yang tepat adalah “Pasal 134 HIR/Pasal 160 RBg”."
+      },
+      {
+        "q": "kewenangan absolute pengadilan agama diatur dalam…",
+        "options": [
+          "Pasal 48 UU No 3/2006",
+          "Pasal 49 UU No 3/2006",
+          "Pasal 50 UU No 3/2006",
+          "Pasal 51 UU No 3/2006"
+        ],
+        "correct": 1,
+        "explanation": "Jawaban yang tepat adalah “Pasal 49 UU No 3/2006”."
+      },
+      {
+        "q": "Direktur Jenderal Badan Peradilan Agama saat ini dijabat oleh",
+        "options": [
+          "H. Bambang Myanto, S.H., M.H.",
+          "Syamsul Maarif, S.H., L.LM, PhD",
+          "Drs. Muchlis, S.H., M.H.",
+          "Dr. Yuwono Agung Nugroho, S.H., M.H."
+        ],
+        "correct": 2,
+        "explanation": "Jawaban yang tepat adalah “Drs. Muchlis, S.H., M.H.”."
+      },
+      {
+        "q": "Kepaniteraan dalam Mahkamah Syariyah kecuali …",
+        "options": [
+          "Panmud Gugatan",
+          "Panmud Pidana",
+          "Panmud Jinayah",
+          "Panmud hukum"
+        ],
+        "correct": 1,
+        "explanation": "Jawaban yang tepat adalah “Panmud Pidana”."
+      },
+      {
+        "q": "Kompetensi absolut perkara kepailitan syariah …",
+        "options": [
+          "Pengadilan Niaga",
+          "PTUN",
+          "PA",
+          "MS",
+          "C & D benar"
+        ],
+        "correct": 0,
+        "explanation": "Jawaban yang tepat adalah “Pengadilan Niaga”."
+      },
+      {
+        "q": "Jika eksekusi Lelang sudah 3 kali oleh KPKNL tetapi tidak ada penawaran, maka KPA/KMS yang bersangkutan melaporkan ke",
+        "options": [
+          "KPKNL Pusat",
+          "Mahkamah syar’iyah provinsi",
+          "Mahkamah Agung",
+          "Dirjen Badilag SEMA 1 Th. 2002"
+        ],
+        "correct": 3,
+        "explanation": "Jawaban yang tepat adalah “Dirjen Badilag SEMA 1 Th. 2002”."
+      }
+    ]
+  },
+  {
+    "id": "ptun",
+    "title": "Struktur & Kompetensi Peradilan Tata Usaha Negara",
+    "questions": [
+      {
+        "q": "Berikut Produk Hukum yang berkaitan Peradilan TUN, kecuali",
+        "options": [
+          "UU No 5 Tahun 1986",
+          "PP No 7 Tahun 1991",
+          "Keppres No 9 Tahun 1990",
+          "UU No 9 Tahun 2004"
+        ],
+        "correct": 2,
+        "explanation": "Keppres No 9 Tahun 1990 mengenai Konstruksi Jalan Tol, bukan mengenai Peradilan Tata Usaha Negara."
+      },
+      {
+        "q": "Berikut yang bukan tindakan administrasi negara yang menjadi kewenangan absolut PTUN:",
+        "options": [
+          "Pencabutan izin usaha oleh dinas terkait",
+          "Keputusan Menteri Keuangan yang menolak permohonan pengurangan pajak",
+          "Pemecatan Tidak Dengan Hormat Perwira Polisi",
+          "Penerbitan Sertifikat Tanah"
+        ],
+        "correct": 1,
+        "explanation": "Sengketa perpajakan sampai saat ini masih di Peradilan Pajak, bukan PTUN tingkat pertama maupun banding."
+      },
+      {
+        "q": "Ketua Kamar Tata Usaha Negara Mahkamah Agung saat ini per tanggal 10 Agustus 2025 dijabat oleh:",
+        "options": [
+          "Prof. Dr. H. Yodi Martono Wahyunadi, S.H., M.H.",
+          "Dr. Cerah Bangun, S.H., M.H.",
+          "Prof. Dr. H. Yulius, S.H., M.H.",
+          "Dr. Irfan Fachrudin, S.H., M.H."
+        ],
+        "correct": 2,
+        "explanation": "Prof. Dr. H. Yulius, S.H., M.H., menjabat sejak November 2022."
+      },
+      {
+        "q": "Keputusan TUN (Beschikking) adalah:",
+        "options": [
+          "Semua kebijakan pemerintah yang bersifat individual konkret",
+          "Keputusan pengadilan berkaitan dengan status kepemilikan tanah dan aset",
+          "Penetapan tertulis yang dikeluarkan oleh badan atau pejabat tata usaha negara",
+          "Ketetapan pejabat tata usaha negara yang berakibat bagi objek hukum"
+        ],
+        "correct": 2,
+        "explanation": "Sesuai Pasal 1 No. 3 UU No 5 Tahun 1986 tentang PTUN."
+      },
+      {
+        "q": "14 Januari adalah Hari Jadi Peradilan TUN yang dilatarbelakangi dengan:",
+        "options": [
+          "UU No 5 Tahun 1986 tentang PTUN",
+          "Keppres No 10 Tahun 1990 tentang pembentukan PTUN Jakarta, Medan, Palembang, Surabaya",
+          "Peresmian PTTUN Jakarta tahun 1991",
+          "PP No 7 Tahun 1991"
+        ],
+        "correct": 3,
+        "explanation": "14 Januari 1991 diterbitkan PP No. 7 Tahun 1991 tentang Penerapan UU PTUN dan diperingati sebagai Hari Lahir PTUN."
+      },
+      {
+        "q": "Berikut adalah PTTUN yang resmi menurut UU No 10 Tahun 2021, kecuali:",
+        "options": [
+          "PTTUN Palembang",
+          "PTTUN Banjarmasin",
+          "PTTUN Makassar",
+          "PTTUN Manado"
+        ],
+        "correct": 2,
+        "explanation": "PTTUN Makassar sudah dibentuk lebih dahulu berdasarkan UU No 10 Tahun 1990."
+      },
+      {
+        "q": "Sebelum berada di bawah Ditjen Badan Peradilan Militer dan TUN, Peradilan TUN berada di bawah:",
+        "options": [
+          "Bersatu dengan Peradilan Agama",
+          "Belum ada, setelah berdiri langsung bergabung dengan Peradilan Militer",
+          "Ada Ditjen Peradilan Tata Usaha, sebelum digabung dengan Militer karena beban perkara sedikit",
+          "Bersatu dengan Peradilan Umum"
+        ],
+        "correct": 3,
+        "explanation": "Awalnya Peradilan TUN masuk dalam Peradilan Umum."
+      },
+      {
+        "q": "Berikut yang bukan kewenangan Peradilan TUN:",
+        "options": [
+          "Sengketa penetapan lokasi pembangunan untuk kepentingan umum",
+          "Sengketa penerimaan negara bukan pajak",
+          "Sengketa proses pemilu",
+          "Sengketa hasil pemilu"
+        ],
+        "correct": 3,
+        "explanation": "Sengketa hasil pemilu adalah kewenangan Mahkamah Konstitusi."
+      },
+      {
+        "q": "Berkaitan dengan izin tambang dari IUP eksplorasi menjadi IUP produksi, PT Albar Sukses Selalu menggugat Bupati Konawe, Gubernur Sultra, dan Dirjen Minerba Kementerian ESDM. Gugatan diajukan kepada:",
+        "options": [
+          "PTTUN Makassar sebagai banding dari PTUN Kendari",
+          "PTTUN Jakarta sebagai kedudukan Ditjen Minerba",
+          "PTUN yang menjadi kedudukan salah satu tergugat",
+          "Kamar Tata Usaha MA"
+        ],
+        "correct": 2,
+        "explanation": "Sesuai Pasal 54 UU No 5 Tahun 1986."
+      },
+      {
+        "q": "Arti dari Presumptio Justea Causa:",
+        "options": [
+          "Tidak ada kepentingan dirugikan maka tidak ada gugatan",
+          "Setiap KTUN sah sampai ada pembatalan oleh pengadilan",
+          "Justifikasi hakim menasihati penggugat memperbaiki gugatannya",
+          "Penggugat dipandang lebih lemah dari tergugat"
+        ],
+        "correct": 1,
+        "explanation": "Setiap KTUN dianggap sah sampai ada putusan pengadilan yang membatalkannya."
+      },
+      {
+        "q": "Tenggang waktu pengajuan gugatan PTUN adalah … hari setelah menerima KTUN:",
+        "options": [
+          "30",
+          "90",
+          "7",
+          "14"
+        ],
+        "correct": 1,
+        "explanation": "Sesuai Pasal 55 UU PTUN, 90 hari."
+      },
+      {
+        "q": "Dalam tahap pemeriksaan pendahuluan, prosedur dismissal dilaksanakan oleh:",
+        "options": [
+          "Wakil Ketua PTUN bersama majelis",
+          "Ketua PTUN",
+          "Ketua PTUN bersama Panitera",
+          "Panitera bersama Panitera Muda Perkara"
+        ],
+        "correct": 1,
+        "explanation": "Sesuai Pasal 62 UU No 5 Tahun 1986."
+      },
+      {
+        "q": "Menurut SEMA No 2 Tahun 1991, yang berwenang melakukan penelitian administratif:",
+        "options": [
+          "Panitera Muda Hukum",
+          "Petugas pendaftaran PTSP",
+          "Panitera bersama Panitera Muda Perkara",
+          "Panitera bersama Panitera Muda Hukum"
+        ],
+        "correct": 2,
+        "explanation": "Sesuai SEMA No 2 Tahun 1991."
+      },
+      {
+        "q": "Berikut asas hukum acara TUN, kecuali:",
+        "options": [
+          "Presumptio Justea Causa",
+          "Vrij Bewijs",
+          "Rebus Sic Stantibus",
+          "Dominus Litis"
+        ],
+        "correct": 2,
+        "explanation": "Rebus Sic Stantibus adalah asas hukum perdata."
+      },
+      {
+        "q": "Onrechtmatige Overheidsdaad adalah:",
+        "options": [
+          "Tindakan pejabat negara yang membuat kontroversi",
+          "Tindakan pemerintah yang melanggar hukum dan merugikan masyarakat",
+          "Tindakan pemerintah yang merugikan masyarakat namun tidak melanggar hukum",
+          "Keputusan pemerintah yang tidak merugikan masyarakat namun melanggar hukum"
+        ],
+        "correct": 1,
+        "explanation": "Perbuatan melawan hukum oleh penguasa."
+      },
+      {
+        "q": "Asas Vrij Bewijs adalah:",
+        "options": [
+          "Asas hakim aktif",
+          "Asas ultra petita terbatas",
+          "Asas pembuktian bebas",
+          "Asas kebebasan pejabat TUN mengubah KTUN"
+        ],
+        "correct": 2,
+        "explanation": "Hakim yang menentukan apa yang dibuktikan, sesuai Pasal 100 jo. 107 UU PTUN."
+      },
+      {
+        "q": "Berikut adalah fungsi TUN:",
+        "options": [
+          "Fungsi kontrol hubungan masyarakat dengan pemerintah",
+          "Fungsi kontrol dan pengawasan kepada pemerintah",
+          "Fungsi kontrol perbuatan melawan hukum pejabat",
+          "Fungsi penegakan keputusan TUN"
+        ],
+        "correct": 1,
+        "explanation": "Fungsi kontrol dan pengawasan kepada pemerintah."
+      },
+      {
+        "q": "Berikut yang bukan PTUN di Indonesia:",
+        "options": [
+          "PTUN Papua Barat",
+          "PTUN Pontianak",
+          "PTUN Pontianak",
+          "PTUN Tanjung Pinang"
+        ],
+        "correct": 0,
+        "explanation": "Tidak ada PTUN Papua Barat, wilayahnya masuk PTUN Jayapura."
+      }
+    ]
+  }
+];
+
+const mainEl = document.getElementById('main');
+const tabsEl = document.getElementById('tabs');
+const searchInput = document.getElementById('searchInput');
+const btnReset = document.getElementById('btnReset');
+
+let activeTab = 'all';
+let answers = {}; // key: `${sectionId}__${qIndex}` -> selected option index
+
+function totalQuestions(){
+  return DATA.reduce((sum, s) => sum + s.questions.length, 0);
+}
+
+function computeStats(){
+  const keys = Object.keys(answers);
+  const answered = keys.length;
+  let correct = 0;
+  DATA.forEach(section => {
+    section.questions.forEach((q, i) => {
+      const key = section.id + '__' + i;
+      if (answers[key] !== undefined && answers[key] === q.correct) correct++;
+    });
+  });
+  return { answered, correct, total: totalQuestions() };
+}
+
+function updateScorebar(){
+  const { answered, correct, total } = computeStats();
+  document.getElementById('sbAnswered').textContent = `${answered}/${total}`;
+  document.getElementById('sbCorrect').textContent = correct;
+  const pct = total ? Math.round((correct / total) * 100) : 0;
+  document.getElementById('sbScore').textContent = pct + '%';
+  document.getElementById('sbBarFill').style.width = pct + '%';
+}
+
+function buildTabs(){
+  tabsEl.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'tab active';
+  allBtn.dataset.id = 'all';
+  allBtn.innerHTML = `Semua <span class="count">${totalQuestions()}</span>`;
+  tabsEl.appendChild(allBtn);
+
+  DATA.forEach(section => {
+    const btn = document.createElement('button');
+    btn.className = 'tab';
+    btn.dataset.id = section.id;
+    btn.innerHTML = `${section.title} <span class="count">${section.questions.length}</span>`;
+    tabsEl.appendChild(btn);
+  });
+
+  tabsEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.tab');
+    if (!btn) return;
+    activeTab = btn.dataset.id;
+    [...tabsEl.children].forEach(c => c.classList.toggle('active', c === btn));
+    render();
+  });
+}
+
+const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+function render(){
+  const term = searchInput.value.trim().toLowerCase();
+  mainEl.innerHTML = '';
+  let shown = 0;
+
+  const sectionsToRender = activeTab === 'all' ? DATA : DATA.filter(s => s.id === activeTab);
+
+  sectionsToRender.forEach(section => {
+    const filtered = section.questions
+      .map((q, i) => ({ ...q, idx: i }))
+      .filter(q => !term || q.q.toLowerCase().includes(term));
+
+    if (filtered.length === 0) return;
+    shown += filtered.length;
+
+    const block = document.createElement('section');
+    block.className = 'section-block';
+
+    const head = document.createElement('div');
+    head.className = 'section-head';
+    head.innerHTML = `<h2>${section.title}</h2><span class="tally">${filtered.length} soal</span>`;
+    block.appendChild(head);
+
+    filtered.forEach(q => {
+      const key = section.id + '__' + q.idx;
+      const selected = answers[key];
+      const locked = selected !== undefined;
+
+      const card = document.createElement('div');
+      card.className = 'qcard' + (locked ? ' locked' : '');
+
+      const optionsHtml = q.options.map((opt, oi) => {
+        let cls = 'opt';
+        if (locked) {
+          if (oi === q.correct) cls += ' correct';
+          else if (oi === selected) cls += ' wrong';
+        }
+        return `<button class="${cls}" data-oi="${oi}">
+          <span class="opt-letter">${letters[oi]}</span><span>${opt}</span>
+        </button>`;
+      }).join('');
+
+      const isCorrect = locked && selected === q.correct;
+
+      card.innerHTML = `
+        <div class="qcard-top">
+          <span class="qa-num">${q.idx + 1}</span>
+          <span class="qcard-q">${q.q}</span>
+        </div>
+        <div class="options">${optionsHtml}</div>
+        <div class="result-tag ${isCorrect ? 'ok' : 'no'}">${isCorrect ? '✓ Jawaban benar' : '✕ Jawaban kurang tepat'}</div>
+        <div class="explanation">${q.explanation || ''}</div>
+      `;
+
+      if (!locked) {
+        card.querySelectorAll('.opt').forEach(optBtn => {
+          optBtn.addEventListener('click', () => {
+            answers[key] = parseInt(optBtn.dataset.oi, 10);
+            updateScorebar();
+            render();
+          });
+        });
+      }
+
+      block.appendChild(card);
+    });
+
+    mainEl.appendChild(block);
+  });
+
+  if (shown === 0) {
+    mainEl.innerHTML = `<div class="empty"><b>Tidak ada soal ditemukan</b>Coba kata kunci lain atau pilih kategori berbeda.</div>`;
+  }
+}
+
+btnReset.addEventListener('click', () => {
+  answers = {};
+  updateScorebar();
+  render();
+});
+
+buildTabs();
+updateScorebar();
+render();
+searchInput.addEventListener('input', render);
+</script>
+</body>
+</html>
